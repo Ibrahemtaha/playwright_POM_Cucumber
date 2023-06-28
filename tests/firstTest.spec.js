@@ -23,7 +23,11 @@ test.describe('All Active Alerts summary widget tests', () => {
     await page.getByRole('menuitem', { name: 'Overview' }).getByText('Overview').click();
   });
 
-    test('Remove Active Alerts summary widget', async ({ page }) => {
+  // Close all 
+  test.afterAll(async () => {
+    await page.close();
+  });
+    test('Remove Active Alerts summary widget', async () => {
   // remove Active Alerts summary widget
   //   await page.frameLocator('iframe[title="dashboard module"]').getByRole('button', { name: 'Delete' }).click();
       const ActiveAlertSummaryDisplayed = await page.frameLocator('iframe[title="dashboard module"]').locator("(//div[contains(@title, 'Active alerts summary')])[1]")
@@ -39,7 +43,7 @@ test.describe('All Active Alerts summary widget tests', () => {
   } 
     });
 
-    test('Add Widget', async ({ page }) => {
+    test('Add Widget', async () => {
   // Add widget 
       await page.frameLocator('iframe[title="dashboard module"]').locator('am-dashboard-toolbar').getByRole('button', { name: 'Add widget' }).click();
       await page.frameLocator('iframe[title="dashboard module"]').getByPlaceholder('Search').click(); 
@@ -53,21 +57,20 @@ test.describe('All Active Alerts summary widget tests', () => {
 
 // 1) If statement cuz widget might not be in UI - Added 
 // 2) what if we had 2 widgets of same 
-// /qqq
 
 //V Describe +  -- min 18 https://www.youtube.com/watch?v=S3NVJo0ySwE&list=PLhW3qG5bs-L9sJKoT1LC5grGT77sfW0Z8&index=11
 //V Devide into different tests
 
-// Hooks = Beforeall for Login -- Previous link after 18 +    Error, need to fix beforeall, 
+//1)  Hooks = Beforeall for Login -- Previous link after 18 +    Error, need to fix beforeall, 
     //according to next video, it's a Typescript video -- need to remove page from all tests
     // min 6  https://www.youtube.com/watch?v=DHsAm12trBA
 
-// try to REMOVE\Comment that line 22 cuz there's a click ---  await page.goto('https://mc-vz7test20.do.acronis.fun/ui/#/dashboards'); 
+//2)  try to REMOVE\Comment that line 22 cuz there's a click ---  await page.goto('https://mc-vz7test20.do.acronis.fun/ui/#/dashboards'); 
 
-// POM Login 
+//3)  POM Login 
 // POM Frameword - + login one page alone -
     // https://www.youtube.com/watch?v=rAec3mZFhF0&list=PLhW3qG5bs-L9sJKoT1LC5grGT77sfW0Z8&index=13
-    //https://www.lambdatest.com/learning-hub/playwright-page-object-model
+    // https://www.lambdatest.com/learning-hub/playwright-page-object-model
     
 
   // All sorts of assertion   https://www.youtube.com/watch?v=hYNOFle3zic&list=PLhW3qG5bs-L9sJKoT1LC5grGT77sfW0Z8&index=9&pp=iAQB
@@ -78,4 +81,4 @@ test.describe('All Active Alerts summary widget tests', () => {
   // Antoations & Tags @Smoke \ @Regression: 
   //https://www.youtube.com/watch?v=9dSRZ-oswlM&list=PLhW3qG5bs-L9sJKoT1LC5grGT77sfW0Z8&index=12
     
-  // Github  last few min of last video 
+  // playwright Mock Networking API 
