@@ -1,34 +1,54 @@
 const { test, expect } = require('@playwright/test');
-const browser = await chromium.launch();
 
-test.beforeAll('Login Test', async ({}) => {
-  const browser = await chromium.launch();
-  const page = await browser.newPage();
-  await page.goto('https://mc-vz7test20.do.acronis.fun/login');
-      // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Login/);
+// test.beforeAll(async () => {
+//     const page = await browser.newPage();
+//   const browser = await chromium.launch();
+//   await page.goto("https://mc-vz7test20.do.acronis.fun/login");
+// });
+// test.beforeAll('Login Test', async () => {
 
-  await page.getByRole('textbox', { name: 'Login' }).click();
-  await page.getByRole('textbox', { name: 'Login' }).fill('ibrahem12');
-  await page.locator('[data-test-id="login-form-button\\.next"]').click();
-  await page.getByRole('textbox', { name: 'Password' }).click();
-  await page.getByRole('textbox', { name: 'Password' }).fill('123qweASD!@#$');
-  await page.locator('[data-test-id="login-form-button\\.next"]').click();
-    //await page.getByRole('button', { name: 'Sign In' }).click();
-  await page.getByRole('button', { name: 'Cyber Protection' }).click();
-  await page.goto('https://mc-vz7test20.do.acronis.fun/ui/#/dashboards');  // try to REMOVE\Comment that line
-  await page.getByRole('menuitem', { name: 'Overview' }).getByText('Overview').click();
-});
+//   await page.goto('https://mc-vz7test20.do.acronis.fun/login');
+//       // Expect a title "to contain" a substring.
+//   await expect(page).toHaveTitle(/Login/);
+
+//   await page.getByRole('textbox', { name: 'Login' }).click();
+//   await page.getByRole('textbox', { name: 'Login' }).fill('ibrahem12');
+//   await page.locator('[data-test-id="login-form-button\\.next"]').click();
+//   await page.getByRole('textbox', { name: 'Password' }).click();
+//   await page.getByRole('textbox', { name: 'Password' }).fill('123qweASD!@#$');
+//   await page.locator('[data-test-id="login-form-button\\.next"]').click();
+//     //await page.getByRole('button', { name: 'Sign In' }).click();
+//   await page.getByRole('button', { name: 'Cyber Protection' }).click();
+//   await page.goto('https://mc-vz7test20.do.acronis.fun/ui/#/dashboards');  // try to REMOVE\Comment that line
+//   await page.getByRole('menuitem', { name: 'Overview' }).getByText('Overview').click();
+// });
 
 // Close all 
-test.afterAll(async () => {
-  await page.close();
-});
+// test.afterAll(async () => {
+//   await page.close();
+// });
 
 test.describe('All Active Alerts summary widget tests', () => {
 
+  test('Login Test', async ({page}) => {
 
-    test('Remove Active Alerts summary widget', async () => {
+    await page.goto('https://mc-vz7test20.do.acronis.fun/login');
+        // Expect a title "to contain" a substring.
+    await expect(page).toHaveTitle(/Login/);
+  
+    await page.getByRole('textbox', { name: 'Login' }).click();
+    await page.getByRole('textbox', { name: 'Login' }).fill('ibrahem12');
+    await page.locator('[data-test-id="login-form-button\\.next"]').click();
+    await page.getByRole('textbox', { name: 'Password' }).click();
+    await page.getByRole('textbox', { name: 'Password' }).fill('123qweASD!@#$');
+    await page.locator('[data-test-id="login-form-button\\.next"]').click();
+      //await page.getByRole('button', { name: 'Sign In' }).click();
+    await page.getByRole('button', { name: 'Cyber Protection' }).click();
+    await page.goto('https://mc-vz7test20.do.acronis.fun/ui/#/dashboards');  // try to REMOVE\Comment that line
+    await page.getByRole('menuitem', { name: 'Overview' }).getByText('Overview').click();
+  });
+  
+    test('Remove Active Alerts summary widget', async ({page}) => {
   // remove Active Alerts summary widget
   //   await page.frameLocator('iframe[title="dashboard module"]').getByRole('button', { name: 'Delete' }).click();
       const ActiveAlertSummaryDisplayed = await page.frameLocator('iframe[title="dashboard module"]').locator("(//div[contains(@title, 'Active alerts summary')])[1]")
@@ -44,7 +64,7 @@ test.describe('All Active Alerts summary widget tests', () => {
   } 
     });
 
-    test('Add Widget', async () => {
+    test('Add Widget', async ({page}) => {
   // Add widget 
       await page.frameLocator('iframe[title="dashboard module"]').locator('am-dashboard-toolbar').getByRole('button', { name: 'Add widget' }).click();
       await page.frameLocator('iframe[title="dashboard module"]').getByPlaceholder('Search').click(); 
