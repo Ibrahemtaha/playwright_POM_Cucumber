@@ -1,41 +1,28 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require("@playwright/test");
+const { chromium } = require("@playwright/test");
 
 // test.beforeAll(async () => {
-//     const page = await browser.newPage();
 //   const browser = await chromium.launch();
+//   const page = await browser.newPage();
 //   await page.goto("https://mc-vz7test20.do.acronis.fun/login");
 // });
-// test.beforeAll('Login Test', async () => {
-
-//   await page.goto('https://mc-vz7test20.do.acronis.fun/login');
-//       // Expect a title "to contain" a substring.
-//   await expect(page).toHaveTitle(/Login/);
-
-//   await page.getByRole('textbox', { name: 'Login' }).click();
-//   await page.getByRole('textbox', { name: 'Login' }).fill('ibrahem12');
-//   await page.locator('[data-test-id="login-form-button\\.next"]').click();
-//   await page.getByRole('textbox', { name: 'Password' }).click();
-//   await page.getByRole('textbox', { name: 'Password' }).fill('123qweASD!@#$');
-//   await page.locator('[data-test-id="login-form-button\\.next"]').click();
-//     //await page.getByRole('button', { name: 'Sign In' }).click();
-//   await page.getByRole('button', { name: 'Cyber Protection' }).click();
-//   await page.goto('https://mc-vz7test20.do.acronis.fun/ui/#/dashboards');  // try to REMOVE\Comment that line
-//   await page.getByRole('menuitem', { name: 'Overview' }).getByText('Overview').click();
-// });
-
 // Close all 
 // test.afterAll(async () => {
 //   await page.close();
 // });
+test.beforeAll(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+ await page.goto("https://mc-vz7test20.do.acronis.fun/login");
+});
 
 test.describe('All Active Alerts summary widget tests', () => {
 
-  test('Login Test', async ({page}) => {
 
-    await page.goto('https://mc-vz7test20.do.acronis.fun/login');
+  test('Login Test', async ({page}) => {
+    // await page.goto('https://mc-vz7test20.do.acronis.fun/login');
         // Expect a title "to contain" a substring.
     await expect(page).toHaveTitle(/Login/);
-  
     await page.getByRole('textbox', { name: 'Login' }).click();
     await page.getByRole('textbox', { name: 'Login' }).fill('ibrahem12');
     await page.locator('[data-test-id="login-form-button\\.next"]').click();
@@ -44,11 +31,11 @@ test.describe('All Active Alerts summary widget tests', () => {
     await page.locator('[data-test-id="login-form-button\\.next"]').click();
       //await page.getByRole('button', { name: 'Sign In' }).click();
     await page.getByRole('button', { name: 'Cyber Protection' }).click();
-    await page.goto('https://mc-vz7test20.do.acronis.fun/ui/#/dashboards');  // try to REMOVE\Comment that line
+    // await page.goto('https://mc-vz7test20.do.acronis.fun/ui/#/dashboards');  // try to REMOVE\Comment that line
     await page.getByRole('menuitem', { name: 'Overview' }).getByText('Overview').click();
-  });
+  // });
   
-    test('Remove Active Alerts summary widget', async ({page}) => {
+    // test('Remove Active Alerts summary widget', async ({page}) => {
   // remove Active Alerts summary widget
   //   await page.frameLocator('iframe[title="dashboard module"]').getByRole('button', { name: 'Delete' }).click();
       const ActiveAlertSummaryDisplayed = await page.frameLocator('iframe[title="dashboard module"]').locator("(//div[contains(@title, 'Active alerts summary')])[1]")
@@ -62,15 +49,15 @@ test.describe('All Active Alerts summary widget tests', () => {
       // .getByRole('button', { name: 'Delete' })
           console.log("Deleted widget")
   } 
-    });
+    // });
 
-    test('Add Widget', async ({page}) => {
+    // test('Add Widget', async ({page}) => {
   // Add widget 
       await page.frameLocator('iframe[title="dashboard module"]').locator('am-dashboard-toolbar').getByRole('button', { name: 'Add widget' }).click();
       await page.frameLocator('iframe[title="dashboard module"]').getByPlaceholder('Search').click(); 
       await page.frameLocator('iframe[title="dashboard module"]').getByPlaceholder('Search').fill('active alerts summary');
       await page.frameLocator('iframe[title="dashboard module"]').locator('am-dialog-content').getByText('Active alerts summary').click();
-  });
+  })  ;
 
 
 });
@@ -102,4 +89,4 @@ test.describe('All Active Alerts summary widget tests', () => {
   // Antoations & Tags @Smoke \ @Regression: 
   //https://www.youtube.com/watch?v=9dSRZ-oswlM&list=PLhW3qG5bs-L9sJKoT1LC5grGT77sfW0Z8&index=12
     
-  // playwright Mock Networking API 
+  // playwright Mock Networking api  
