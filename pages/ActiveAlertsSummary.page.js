@@ -21,7 +21,7 @@ exports.ActiveAlertsSuammry = class ActiveAlertsSuammry {
 
     async addWidget(widgetName){
         console.log("before addWidgetButton")
-        // await this.addWidgetButton  WiatforSelector
+        // await this.page.waitForSelector(this.addWidgetButton);
         await this.addWidgetButton.click()
         await this.searchWdiget.click()
         await this.searchWdiget.fill(widgetName)

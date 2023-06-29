@@ -28,22 +28,26 @@ test.describe('All Active Alerts summary widget tests', () => {
     Login.login()
     Login.cyberProtectionPage()
     Login.menuItem_overviewButton()
-
-    // 2) Remove Widget Active Alerts summary
-      const ActiveAlertSummaryDisplayed = await page.frameLocator('iframe[title="dashboard module"]').locator("(//div[contains(@title, 'Active alerts summary')])[1]")
-      if (ActiveAlertSummaryDisplayed) {
-          console.log("Inside IF")
-          await ActiveAlertSummaryDisplayed.click(); 
-          console.log("Clicked")
-          const deleteFirstButton = await page.frameLocator('iframe[title="dashboard module"]').locator("//div[contains(@title, 'Active alerts summary')]//following-sibling::div//button[@title = 'Delete']").first()
-          await deleteFirstButton.click();
-          console.log("Deleted widget")
-        } 
     
+
+    // Login.removeWidget();
+    // 2) Remove Widget Active Alerts summary
+      // const ActiveAlertSummaryDisplayed = await page.frameLocator('iframe[title="dashboard module"]').locator("(//div[contains(@title, 'Active alerts summary')])[1]")
+      // if (ActiveAlertSummaryDisplayed) {
+      //     console.log("Inside IF")
+      //     await ActiveAlertSummaryDisplayed.click(); 
+      //     console.log("Clicked")
+      //     const deleteFirstButton = await page.frameLocator('iframe[title="dashboard module"]').locator("//div[contains(@title, 'Active alerts summary')]//following-sibling::div//button[@title = 'Delete']").first()
+      //     await deleteFirstButton.click();
+      //     console.log("Deleted widget")
+      //   } 
+    
+
+        Login.addWidget('active alerts summary')
     // 3) Add Widget Active Alerts summary 
-    const ActiveAlertsSuammryWidget = new ActiveAlertsSuammry(page)
-    console.log("before ActiveAlertsSuammryWidget")
-    ActiveAlertsSuammryWidget.addWidget('active alerts summary')
+    // const ActiveAlertsSuammryWidget = new ActiveAlertsSuammry(page)
+    // console.log("before ActiveAlertsSuammryWidget")
+    // ActiveAlertsSuammryWidget.addWidget('active alerts summary')
 
       // await page.frameLocator('iframe[title="dashboard module"]').locator('am-dashboard-toolbar').getByRole('button', { name: 'Add widget' }).click();
       // await page.frameLocator('iframe[title="dashboard module"]').getByPlaceholder('Search').click(); 
