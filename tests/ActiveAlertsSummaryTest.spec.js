@@ -41,8 +41,9 @@ test.describe('All Active Alerts summary widget tests', () => {
         } 
     
     // 3) Add Widget Active Alerts summary 
-    const ActiveAlertsSuammryAdd = new ActiveAlertsSuammry(page)
-    ActiveAlertsSuammryAdd.addWidget('active alerts summary')
+    const ActiveAlertsSuammryWidget = new ActiveAlertsSuammry(page)
+    console.log("before ActiveAlertsSuammryWidget")
+    ActiveAlertsSuammryWidget.addWidget('active alerts summary')
 
       // await page.frameLocator('iframe[title="dashboard module"]').locator('am-dashboard-toolbar').getByRole('button', { name: 'Add widget' }).click();
       // await page.frameLocator('iframe[title="dashboard module"]').getByPlaceholder('Search').click(); 
@@ -62,8 +63,6 @@ test.describe('All Active Alerts summary widget tests', () => {
 // 1) If statement cuz widget might not be in UI - Added 
 // 2) what if we had 2 widgets of same 
 
-//V Describe +  -- min 18 https://www.youtube.com/watch?v=S3NVJo0ySwE&list=PLhW3qG5bs-L9sJKoT1LC5grGT77sfW0Z8&index=11
-//V Devide into different tests
 
 //1)  Hooks = Beforeall for Login -- Previous link after 18 +    Error, need to fix beforeall, 
     //according to next video, it's a Typescript video -- need to remove page from all tests
